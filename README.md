@@ -1,20 +1,19 @@
 # VERGE — static site
 
-Struktura (SVE mora biti u rootu repozitorija, jedan pored drugog):
-
 ```
-index.html
-shop.html
-collections.html
-workshop.html
-journal.html
-img/           <- 79 slika, OBAVEZNO uz HTML fajlove
-.nojekyll
+index.html  shop.html  collections.html  workshop.html  journal.html
+i/          <- 79 slika u punoj kvaliteti (mora biti uz HTML fajlove)
 ```
 
-## Hostovanje
+## Upload preko github.com (bez git-a)
 
-1. Otpakuj zip. Uđi UNUTAR foldera i pushaj njegov sadržaj (ne sam folder):
+1. Otpakuj zip do kraja.
+2. Repo → **Add file → Upload files** → prevuci **5 HTML fajlova** → Commit changes.
+3. Ponovo **Add file → Upload files** → prevuci folder **i** → Commit changes.
+
+Ako javi error 400, slike prevuci u dva dijela (pola pa pola) — GitHub odbija prevelik batch odjednom.
+
+## Ili preko git-a
 
 ```bash
 git init
@@ -25,9 +24,7 @@ git remote add origin https://github.com/<user>/<repo>.git
 git push -u origin main
 ```
 
-Ako uploaduješ preko github.com (Add file → Upload files), prevuci **sve fajlove I folder `img`** odjednom — inače slika neće biti.
+## Pages
 
-2. Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
-3. Live za ~1 min na `https://<user>.github.io/<repo>/`.
-
-Provjera: `https://<user>.github.io/<repo>/img/p.webp` mora otvoriti sliku. Ako daje 404, folder `img` nije uploadovan.
+Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
+Provjera: `https://<user>.github.io/<repo>/i/p.webp` mora otvoriti sliku.
