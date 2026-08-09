@@ -335,6 +335,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (__vergeElapsed < __vergeMinSplashMs) {
       await new Promise(function(r) { setTimeout(r, __vergeMinSplashMs - __vergeElapsed); });
     }
+    if (doc.body) {
+      const __vergeCarry = doc.createElement('div');
+      __vergeCarry.id = '__verge_carry_splash';
+      __vergeCarry.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#F7F4EF;z-index:2147483647;';
+      const __vergeCarryWord = doc.createElement('span');
+      __vergeCarryWord.textContent = 'VERGE';
+      __vergeCarryWord.style.cssText = 'font-family:Georgia,serif;font-weight:700;font-size:28px;letter-spacing:8px;color:#1F1C19;';
+      __vergeCarry.appendChild(__vergeCarryWord);
+      doc.body.appendChild(__vergeCarry);
+    }
     document.documentElement.replaceWith(doc.documentElement);
 
     // Resolve page-frame markers: mint this document's own blob for each
@@ -385,9 +395,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
     }
+    await new Promise(function(r) { requestAnimationFrame(function() { requestAnimationFrame(r); }); });
+    const __vergeDone = document.getElementById('__verge_carry_splash');
+    if (__vergeDone) __vergeDone.remove();
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
+    const __vergeErrCarry = document.getElementById('__verge_carry_splash');
+    if (__vergeErrCarry) __vergeErrCarry.remove();
   }
 });
 
