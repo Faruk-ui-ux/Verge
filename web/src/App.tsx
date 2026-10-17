@@ -1,5 +1,5 @@
-import DemoOne from "@/components/ui/hero-section-1-demo";
+import MagneticCursorDemo from "@/components/ui/magnetic-cursor-demo";
 
 export default function App() {
-  return <DemoOne />;
+  return <MagneticCursorDemo />;
 }
