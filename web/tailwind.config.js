@@ -2,6 +2,9 @@
 export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  // Tailwind prunes class rules from @layer base when the class is never seen
+  // in scanned source, which silently drops the .dark token block.
+  safelist: ["dark"],
   theme: {
     extend: {
       borderRadius: {
